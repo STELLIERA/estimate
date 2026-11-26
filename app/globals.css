@@ -110,7 +110,7 @@ button {
   margin: 0;
   color: var(--ink);
   font-family: Georgia, "Noto Serif JP", serif;
-  font-size: clamp(30px, 3vw, 43px);
+  font-size: clamp(30px, 3vw, 40px);
   letter-spacing: 0.035em;
   line-height: 1.5;
 }
@@ -574,7 +574,7 @@ button {
   }
 
   .intro-column h1 {
-    font-size: 27px;
+    font-size: 24px;
   }
 
   .eyebrow {
@@ -595,7 +595,7 @@ button {
   }
 
   .question-heading {
-    margin-top: 27px;
+    margin-top: 24px;
   }
 
   .choice {
@@ -637,7 +637,7 @@ button {
   }
 
   .estimate-total strong {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .estimate-monthly {
