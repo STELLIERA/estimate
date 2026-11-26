@@ -87,9 +87,9 @@ button {
 .estimator-shell {
   display: grid;
   width: min(1240px, 88vw);
-  grid-template-columns: 0.78fr 1.22fr;
+  grid-template-columns: 0.8fr 1.22fr;
   align-items: center;
-  gap: clamp(42px,7vw, 112px);
+  gap: clamp(42px, 7vw, 112px);
   margin: auto;
   padding: 76px 0 84px;
 }
@@ -110,7 +110,7 @@ button {
   margin: 0;
   color: var(--ink);
   font-family: Georgia, "Noto Serif JP", serif;
-  font-size: clamp(30px, 3vw, 40px);
+  font-size: clamp(30px, 3vw, 38px);
   letter-spacing: 0.035em;
   line-height: 1.5;
 }
