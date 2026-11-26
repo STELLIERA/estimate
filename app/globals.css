@@ -89,7 +89,7 @@ button {
   width: min(1240px, 88vw);
   grid-template-columns: 0.78fr 1.22fr;
   align-items: center;
-  gap: clamp(42px, 8vw, 112px);
+  gap: clamp(42px,7vw, 112px);
   margin: auto;
   padding: 76px 0 84px;
 }
