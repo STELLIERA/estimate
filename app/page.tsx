@@ -324,6 +324,30 @@ export default function Home() {
   );
 
   const estimate = getEstimate(answers);
+
+  const productionPlan =
+    typeof answers.productionPlan === "string"
+      ? answers.productionPlan
+      : "";
+
+  let portfolioDiscountMessage = "";
+
+  if (answers.siteStatus === "new") {
+    if (productionPlan === "design") {
+      portfolioDiscountMessage =
+        "実績掲載にご協力いただける場合、制作費から5,000円割引します。";
+    } else if (
+      [
+        "coding-static",
+        "coding-wordpress",
+        "design-coding-static",
+        "design-coding-wordpress",
+      ].includes(productionPlan)
+    ) {
+      portfolioDiscountMessage =
+        "静的サイト・WordPressの新規制作は、実績掲載にご協力いただける場合、制作費から10,000円割引します。";
+    }
+  }
   const selectedValues = current ? answers[current.id] : undefined;
 
   const visibleChoices = current
@@ -434,7 +458,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="studio flow ホーム">
           <span className="brand-mark">s</span>
-          <span>Studio flow</span>
+          <span>料金シミュレーター</span>
         </a>
         <span className="header-note">ホームページ制作のご相談</span>
       </header>
@@ -442,7 +466,7 @@ export default function Home() {
       <section className="estimator-shell" id="top">
         <div className="intro-column">
           <p className="eyebrow">WEBSITE PLANNER</p>
-          <h1>つくりたいサイトを<br />一緒に整理しましょう。</h1>
+          <h1>希望に合った制作内容と<br />料金の目安をチェック</h1>
           <p className="intro-copy">
             いくつかの質問に答えるだけで、必要な内容と料金の目安を整理できます。
             まだ決まっていない項目は「相談したい」を選んでください。
@@ -507,7 +531,6 @@ export default function Home() {
             </>
           ) : (
             <div className="result-content">
-              <div className="result-symbol">✓</div>
               <h2>ご希望を整理しました</h2>
               <p className="result-lead">回答内容と料金の内訳を確認してください。フォームにも引き継げます。</p>
 
@@ -521,34 +544,70 @@ export default function Home() {
 
               <section className="estimate-box" aria-label="料金の目安">
                 <h3>料金の目安</h3>
+
                 <div className="estimate-line">
                   <span>基本料金</span>
-                  <strong>{estimate.basePrice === null ? "個別見積もり" : yen(estimate.basePrice)}</strong>
+                  <strong>
+                    {estimate.basePrice === null
+                      ? "個別見積もり"
+                      : yen(estimate.basePrice)}
+                  </strong>
                 </div>
+
                 {estimate.optionLines.map((line) => (
                   <div className="estimate-line" key={line.id}>
-                    <span>{line.label}{line.included ? "（基本プランに含む）" : ""}</span>
-                    <strong>{line.included ? "含む" : line.amount === null ? "個別見積もり" : yen(line.amount)}</strong>
+                    <span>
+                      {line.label}
+                      {line.included ? "（基本プランに含む）" : ""}
+                    </span>
+                    <strong>
+                      {line.included
+                        ? "含む"
+                        : line.amount === null
+                          ? "個別見積もり"
+                          : yen(line.amount)}
+                    </strong>
                   </div>
                 ))}
+
                 <div className="estimate-line estimate-subtotal">
                   <span>有料オプション小計</span>
                   <strong>{yen(estimate.optionTotal)}</strong>
                 </div>
+
                 <div className="estimate-line estimate-total">
                   <span>初期費用の目安</span>
-                  <strong>{estimate.total === null ? "個別見積もり" : yen(estimate.total)}</strong>
+                  <strong>
+                    {estimate.total === null
+                      ? "個別見積もり"
+                      : yen(estimate.total)}
+                  </strong>
                 </div>
+
+                {portfolioDiscountMessage && (
+                  <p className="estimate-note">
+                    {portfolioDiscountMessage}
+                    <br />
+                    表示金額は割引適用前です。割引は実績掲載にご協力いただける場合に適用します。
+                  </p>
+                )}
+
                 {estimate.monthlyLabel && estimate.monthlyPrice !== null && (
                   <div className="estimate-line estimate-monthly">
                     <span>{estimate.monthlyLabel}</span>
                     <strong>{yen(estimate.monthlyPrice)}／月</strong>
                   </div>
                 )}
+
                 {estimate.needsCustomQuote && (
-                  <p className="estimate-note">ページ構成や予約機能など、選択内容によって個別のお見積もりが必要です。</p>
+                  <p className="estimate-note">
+                    ページ構成や予約機能など、選択内容によって個別のお見積もりが必要です。
+                  </p>
                 )}
-                <p className="estimate-note">表示金額は料金表に基づく最低料金の目安です。正式な金額は内容確認後にご案内します。</p>
+
+                <p className="estimate-note">
+                  表示金額は料金表に基づく最低料金の目安です。正式な金額は内容確認後にご案内します。
+                </p>
               </section>
 
               <div className="result-actions">

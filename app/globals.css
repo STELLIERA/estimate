@@ -11,6 +11,7 @@
   --surface: #fffdfb;
   --surface-alt: #f5eee9;
   --font-sans: Arial, "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  --font-serif: "Zen Old Mincho", "Noto Serif JP", "Yu Mincho", serif;
 }
 
 * {
@@ -73,7 +74,7 @@ button {
   border-radius: 9px 9px 9px 3px;
   background: var(--accent);
   color: #fffaf7;
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 22px;
   font-style: italic;
 }
@@ -109,7 +110,7 @@ button {
 .intro-column h1 {
   margin: 0;
   color: var(--ink);
-  font-family: Georgia, "Noto Serif JP", serif;
+  font-family: var(--font-serif);
   font-size: clamp(30px, 3vw, 38px);
   letter-spacing: 0.035em;
   line-height: 1.5;
@@ -181,7 +182,7 @@ button {
   justify-content: space-between;
   color: var(--muted);
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
 }
 
