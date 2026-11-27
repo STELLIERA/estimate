@@ -652,5 +652,8 @@ button {
   .site-footer {
     gap: 12px;
     font-size: 9px;
+    display: flex;
+    justify-content: flex-end;
+
   }
 }
