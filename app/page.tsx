@@ -623,7 +623,7 @@ export default function Home() {
           )}
         </div>
       </section>
-      <footer className="site-footer"><span>studio flow</span><span>あなたの事業に合ったWebサイトづくりを。</span></footer>
+      <footer className="site-footer"><span>あなたの事業に合ったWebサイトづくりを。</span></footer>
     </main>
   );
 }
